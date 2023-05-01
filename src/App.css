@@ -83,7 +83,8 @@ header .restaurant-infos .left-column {
 }
 
 header .restaurant-infos p {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  line-height: 2rem;
 }
 
 header .restaurant-infos img {
@@ -142,6 +143,9 @@ main {
   overflow: hidden; /* nope... */
 }
 
+.meal-text :last-child {
+  margin-top: 15px;
+}
 .meal .price {
   font-size: 1.1rem;
   margin-right: 15px;
