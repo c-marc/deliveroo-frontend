@@ -80,12 +80,13 @@ main {
 
 .meal {
   width: calc((100% - 20px) / 2);
+  height: 160px;
   background-color: white;
   border-radius: 5px;
   padding: 10px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .meal .text {
