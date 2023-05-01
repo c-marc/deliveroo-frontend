@@ -1,0 +1,108 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: lightgrey;
+  font-family: sans-serif;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.left-column {
+  flex: 1;
+}
+
+.right-column {
+  width: 350px;
+}
+
+header {
+  background-color: white;
+}
+
+header .top-bar {
+  height: 60px;
+  border-bottom: 1px solid lightgrey;
+}
+
+header .top-bar .container {
+  display: flex;
+  align-items: center;
+}
+
+header .top-bar img {
+  height: 40px;
+  object-fit: contain;
+}
+
+header .restaurant-infos {
+  height: 255px;
+  padding: 1rem 0;
+  display: flex;
+  gap: 1rem;
+}
+
+header .restaurant-infos img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+main {
+  display: flex;
+}
+
+.meals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.meal {
+  width: calc((100% - 20px) / 2);
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.meal .text {
+  height: 100%;
+}
+
+.meal p {
+  overflow: hidden; /* nope... */
+}
+
+.meal .badge {
+  font-weight: bold;
+  color: orangered;
+}
+
+.meal img {
+  width: 130px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 10px;
+}
