@@ -35,7 +35,7 @@ const App = () => {
         )}
       </Header>
 
-      <main className="container">
+      <main className="container columns">
         {isLoading ? <p>Loading...</p> : <Menu menu={data.categories} />}
         <div className="right-column">...</div>
       </main>

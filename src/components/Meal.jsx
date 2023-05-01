@@ -7,7 +7,7 @@ const Meal = ({ meal }) => {
         <h3>{meal.title}</h3>
         <p>{meal.description}</p>
         <div>
-          <span className="price">{meal.price}</span>
+          <span className="price">{meal.price} €</span>
           {meal.popular && <Badge />}
         </div>
       </div>

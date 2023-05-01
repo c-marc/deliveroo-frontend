@@ -1,6 +1,6 @@
 const RestaurantInfos = ({ restaurant }) => {
   return (
-    <div className="restaurant-infos container">
+    <div className="restaurant-infos container columns">
       <div className="left-column">
         <h2>{restaurant.name}</h2>
         <p>{restaurant.description}</p>
