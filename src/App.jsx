@@ -5,10 +5,13 @@ import axios from "axios";
 import Header from "./components/Header";
 import RestaurantInfos from "./components/RestaurantInfo";
 import Menu from "./components/Menu";
+import Basket from "./components/Basket";
 
 const App = () => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+
+  const [basket, setBasket] = useState([]);
 
   const fetchData = async () => {
     try {
@@ -25,6 +28,18 @@ const App = () => {
     fetchData();
   }, []);
 
+  const addToBasket = (id, title, price) => {
+    const newBasket = [...basket];
+    if (newBasket.some((item) => item.id === id)) {
+      newBasket.map((item) => {
+        return item.id === id ? { ...item, quantity: item.quantity++ } : item;
+      });
+    } else {
+      newBasket.push({ id, title, price, quantity: 1 });
+    }
+    setBasket(newBasket);
+  };
+
   return (
     <div className="app">
       <Header>
@@ -36,8 +51,16 @@ const App = () => {
       </Header>
 
       <main className="container columns">
-        {isLoading ? <p>Loading...</p> : <Menu menu={data.categories} />}
-        <div className="right-column">...</div>
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <Menu menu={data.categories} addToBasket={addToBasket} />
+        )}
+        <Basket
+          className="right-column"
+          basket={basket}
+          setBasket={setBasket}
+        />
       </main>
     </div>
   );

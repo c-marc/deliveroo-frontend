@@ -6,6 +6,7 @@
 
 :root {
   --color-background: #f4f5f5;
+  --color-primary: #02cdbd;
 }
 
 body {
@@ -161,4 +162,72 @@ main {
   aspect-ratio: 1;
   object-fit: cover;
   border-radius: 10px;
+}
+
+/* BASKET */
+.basket-empty {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.price {
+  text-align: right;
+}
+
+.basket {
+  background-color: white;
+  border-radius: 6px;
+  padding: 15px;
+}
+
+.basket > button {
+  width: 100%;
+  text-align: center;
+  border: none;
+  border-radius: 6px;
+  padding: 1em 0;
+  background-color: var(--color-primary);
+  color: white;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.basket > button:disabled {
+  background-color: lightgrey;
+}
+
+.basket .basket-line {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.basket > .basket-line:last-child {
+  font-weight: bold;
+}
+
+.basket-item > div:first-child {
+  display: flex;
+}
+
+.basket-item .controls {
+  display: flex;
+  gap: 5px;
+  margin-right: 10px;
+}
+
+.basket-item .controls button {
+  background-color: white;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: 50%;
+}
+
+.basket-item .controls span {
+  color: grey;
+}
+
+.basket-item-title {
+  height: 1lh;
+  overflow: hidden;
 }

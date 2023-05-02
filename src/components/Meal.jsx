@@ -1,8 +1,12 @@
 import Badge from "./Badge";
 
-const Meal = ({ meal }) => {
+const Meal = ({ meal, addToBasket }) => {
+  const handleClick = () => {
+    addToBasket(meal.id, meal.title, meal.price);
+  };
+
   return (
-    <div className="meal">
+    <article className="meal" onClick={handleClick}>
       <div className="meal-text">
         <h3>{meal.title}</h3>
         <p>{meal.description}</p>
@@ -13,7 +17,7 @@ const Meal = ({ meal }) => {
       </div>
 
       {meal.picture && <img src={meal.picture} alt={`${meal.title}`} />}
-    </div>
+    </article>
   );
 };
 
