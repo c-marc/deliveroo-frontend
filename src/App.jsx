@@ -3,15 +3,15 @@ import "./App.css";
 import axios from "axios";
 
 import Header from "./components/Header";
-import RestaurantInfos from "./components/RestaurantInfo";
+import Restaurant from "./components/Restaurant";
 import Menu from "./components/Menu";
-import Basket from "./components/Basket";
+import Cart from "./components/Cart";
 
 const App = () => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
-  const [basket, setBasket] = useState([]);
+  const [cart, setCart] = useState([]);
 
   const fetchData = async () => {
     try {
@@ -28,16 +28,16 @@ const App = () => {
     fetchData();
   }, []);
 
-  const addToBasket = (id, title, price) => {
-    const newBasket = [...basket];
-    if (newBasket.some((item) => item.id === id)) {
-      newBasket.map((item) => {
+  const addToCart = (id, title, price) => {
+    const newCart = [...cart];
+    if (newCart.some((item) => item.id === id)) {
+      newCart.map((item) => {
         return item.id === id ? { ...item, quantity: item.quantity++ } : item;
       });
     } else {
-      newBasket.push({ id, title, price, quantity: 1 });
+      newCart.push({ id, title, price, quantity: 1 });
     }
-    setBasket(newBasket);
+    setCart(newCart);
   };
 
   return (
@@ -46,7 +46,7 @@ const App = () => {
         {isLoading ? (
           <p>Loading...</p>
         ) : (
-          <RestaurantInfos restaurant={data.restaurant} />
+          <Restaurant restaurant={data.restaurant} />
         )}
       </Header>
 
@@ -54,13 +54,10 @@ const App = () => {
         {isLoading ? (
           <p>Loading...</p>
         ) : (
-          <Menu menu={data.categories} addToBasket={addToBasket} />
+          <Menu menu={data.categories} addToCart={addToCart} />
         )}
-        <Basket
-          className="right-column"
-          basket={basket}
-          setBasket={setBasket}
-        />
+
+        <Cart cart={cart} setCart={setCart} />
       </main>
     </div>
   );

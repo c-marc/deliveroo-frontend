@@ -1,15 +1,15 @@
 import Category from "./Category";
 
-const Menu = ({ menu, addToBasket }) => {
+const Menu = ({ menu, addToCart }) => {
   return (
-    <div className="menu left-column">
+    <div className="menu column-left">
       {menu.map((category) => {
         if (category.meals.length === 0) return null;
         return (
           <Category
             key={category.name}
             category={category}
-            addToBasket={addToBasket}
+            addToCart={addToCart}
           />
         );
       })}

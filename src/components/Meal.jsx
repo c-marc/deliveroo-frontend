@@ -1,8 +1,10 @@
 import Badge from "./Badge";
 
-const Meal = ({ meal, addToBasket }) => {
+import { asPrice } from "../utils/format";
+
+const Meal = ({ meal, addToCart }) => {
   const handleClick = () => {
-    addToBasket(meal.id, meal.title, meal.price);
+    addToCart(meal.id, meal.title, Number(meal.price));
   };
 
   return (
@@ -10,10 +12,10 @@ const Meal = ({ meal, addToBasket }) => {
       <div className="meal-text">
         <h3>{meal.title}</h3>
         <p>{meal.description}</p>
-        <div>
-          <span className="price">{meal.price} €</span>
+        <p>
+          <span className="price">{asPrice(Number(meal.price))}</span>
           {meal.popular && <Badge />}
-        </div>
+        </p>
       </div>
 
       {meal.picture && <img src={meal.picture} alt={`${meal.title}`} />}

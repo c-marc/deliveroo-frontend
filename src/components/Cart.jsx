@@ -1,52 +1,55 @@
-import BasketItem from "./BasketItem";
+import CartItem from "./CartItem";
 import { asPrice } from "../utils/format";
 
-const Basket = ({ basket, setBasket }) => {
-  const subTotal = basket.reduce(
-    (acc, b) => acc + Number(b.price) * b.quantity,
+const Cart = ({ cart, setCart }) => {
+  const subTotal = cart.reduce(
+    (acc, item) => acc + item.price * item.quantity,
     0
   );
   const fees = 2.5;
 
   const handleQuantityChange = (id, delta) => {
-    const newBasket = basket.map((b) => {
-      return b.id === id ? { ...b, quantity: b.quantity + delta } : b;
+    const newCart = cart.map((item) => {
+      return item.id === id
+        ? { ...item, quantity: item.quantity + delta }
+        : item;
     });
-    setBasket(newBasket.filter((b) => b.quantity > 0));
+    setCart(newCart.filter((item) => item.quantity > 0));
   };
 
-  const isEmpty = basket.length === 0;
+  // helper
+  const isEmpty = cart.length === 0;
 
   return (
-    <div className="basket right-column">
+    <div className="cart column-right">
       <button disabled={isEmpty}>Valider mon panier</button>
 
       {isEmpty ? (
-        <p className="basket-empty">Votre panier est vide</p>
+        <p className="cart-empty">Votre panier est vide</p>
       ) : (
         <>
           <ul>
-            {basket.map((b) => {
+            {cart.map((item) => {
               return (
-                <BasketItem
-                  key={b.id}
-                  item={b}
+                <CartItem
+                  key={item.id}
+                  item={item}
                   handleQuantityChange={handleQuantityChange}
                 />
               );
             })}
           </ul>
           <hr />
-          <div className="basket-line">
+          <div className="cart-line">
             <span>Sous-total</span>
             <span className="price">{asPrice(subTotal)}</span>
           </div>
-          <div className="basket-line">
+          <div className="cart-line">
             <span>Frais de livraison</span>
             <span className="price">{asPrice(fees)}</span>
           </div>
           <hr />
-          <div className="basket-line">
+          <div className="cart-line">
             <span>Total</span>
             <span className="price">{asPrice(subTotal + fees)}</span>
           </div>
@@ -56,4 +59,4 @@ const Basket = ({ basket, setBasket }) => {
   );
 };
 
-export default Basket;
+export default Cart;

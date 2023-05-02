@@ -7,6 +7,9 @@
 :root {
   --color-background: #f4f5f5;
   --color-primary: #02cdbd;
+  --color-text-grey: #868a8a;
+  --container-width: 1200px;
+  --border-radius: 8px;
 }
 
 body {
@@ -29,13 +32,13 @@ h3 {
 }
 
 p {
-  color: grey;
+  color: var(--color-text-grey);
   line-height: 1.2em;
 }
 
 /* -- LAYOUT -- */
 .container {
-  max-width: 1200px;
+  max-width: var(--container-width);
   margin: 0 auto;
 }
 
@@ -44,11 +47,11 @@ p {
   gap: 30px;
 }
 
-.left-column {
+.column-left {
   flex: 1;
 }
 
-.right-column {
+.column-right {
   width: 350px;
 }
 
@@ -69,30 +72,28 @@ header .top-bar .container {
 }
 
 header .top-bar img {
-  height: 40px;
+  height: 70%;
 }
 
-header .restaurant-infos {
+header .restaurant {
   height: 255px;
   padding: 30px 0;
 }
 
-header .restaurant-infos .left-column {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+header .restaurant h1 {
+  margin-bottom: 1em;
 }
 
-header .restaurant-infos p {
+header .restaurant p {
   font-size: 1.3rem;
   line-height: 2rem;
 }
 
-header .restaurant-infos img {
+header .restaurant img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
 }
 
 /* -- MAIN -- */
@@ -122,7 +123,7 @@ main {
   width: calc((100% - 20px) / 2);
   height: 160px;
   background-color: white;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   padding: 15px;
   display: flex;
   justify-content: space-between;
@@ -136,19 +137,23 @@ main {
   gap: 10px;
 }
 
-.meal :is(p, span) {
+/* .meal :is(p, span) {
   color: grey;
-}
+} */
 
 .meal p {
-  max-height: 35px;
+  --lh: 18px;
+  line-height: var(--lh);
+  max-height: calc(var(--lh) * 2);
   max-height: 2lh;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.meal-text :last-child {
+.meal-text p:last-of-type {
   margin-top: 15px;
 }
+
 .meal .price {
   font-size: 1.1rem;
   margin-right: 15px;
@@ -163,11 +168,11 @@ main {
   width: 130px;
   aspect-ratio: 1;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
 }
 
-/* BASKET */
-.basket-empty {
+/* CART */
+.cart-empty {
   text-align: center;
   margin: 20px 0;
 }
@@ -176,17 +181,17 @@ main {
   text-align: right;
 }
 
-.basket {
+.cart {
   background-color: white;
-  border-radius: 6px;
+  border-radius: var(--border-radius);
   padding: 15px;
 }
 
-.basket > button {
+.cart > button {
   width: 100%;
   text-align: center;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--border-radius);
   padding: 1em 0;
   background-color: var(--color-primary);
   color: white;
@@ -194,17 +199,17 @@ main {
   margin-bottom: 1rem;
 }
 
-.basket > button:hover:not(:disabled) {
+.cart > button:hover:not(:disabled) {
   opacity: 0.8;
   cursor: pointer;
 }
 
-.basket > button:disabled {
+.cart > button:disabled {
   background-color: lightgrey;
   cursor: not-allowed;
 }
 
-.basket .basket-line {
+.cart-line {
   margin: 10px 0;
   display: flex;
   justify-content: space-between;
@@ -212,18 +217,18 @@ main {
   gap: 5px;
 }
 
-.basket > .basket-line:last-child {
+.cart > .cart-line:last-child {
   font-weight: bold;
 }
 
-.basket-item .controls {
+.cart-item-controls {
   display: flex;
   align-items: center;
   gap: 5px;
   margin-right: 10px;
 }
 
-.basket-item .controls button {
+.cart-item-controls button {
   width: 20px;
   height: 20px;
   display: flex;
@@ -235,10 +240,14 @@ main {
   border-radius: 50%;
 }
 
-.basket-item .controls span {
+.cart-item-controls span {
   color: grey;
 }
 
-.basket-item-title {
+.cart-item p {
+  color: black;
+}
+
+.cart-item-text {
   flex: 2;
 }
