@@ -194,14 +194,21 @@ main {
   margin-bottom: 1rem;
 }
 
+.basket > button:hover:not(:disabled) {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
 .basket > button:disabled {
   background-color: lightgrey;
+  cursor: not-allowed;
 }
 
 .basket .basket-line {
   margin: 10px 0;
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   gap: 5px;
 }
 
@@ -211,6 +218,7 @@ main {
 
 .basket-item .controls {
   display: flex;
+  align-items: center;
   gap: 5px;
   margin-right: 10px;
 }
